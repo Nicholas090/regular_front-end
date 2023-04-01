@@ -87,6 +87,41 @@
   color: #0095f6;
   text-decoration: none;
 }
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.card {
+  flex-basis: calc(33.33% - 20px);
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #666;
+}
+
+
 @media (max-width: 767px) {
   .loginWrap {
     padding: 0 20px;
