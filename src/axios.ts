@@ -11,7 +11,7 @@ $api.interceptors.request.use((config) => {
     if (config.headers === undefined) {
         throw new Error('Header undefined in axios');
     } else {
-        config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
+        config.headers.authorization = `Bearer ${localStorage.getItem('token')}`;
         return config;
     }
 });

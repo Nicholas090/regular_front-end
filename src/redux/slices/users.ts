@@ -52,7 +52,13 @@ const usersSlice = createSlice({
     reducers: {
         logout: (state) => {
             state.data = null;
-        },    },
+        },
+        setData: (state,  payload) => {
+            console.log(payload.payload);
+            state.data = payload.payload;
+            state.status = 'loaded';
+        }
+    },
     extraReducers: {
         [login.pending.type]: (state) => {
             state.status = 'loading';
@@ -84,4 +90,4 @@ const usersSlice = createSlice({
 
 export const usersReducer = usersSlice.reducer;
 
-export const { logout } = usersSlice.actions;
+export const { logout, setData } = usersSlice.actions;

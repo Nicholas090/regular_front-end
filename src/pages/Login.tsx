@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import {useAppDispatch} from "../redux/hooks";
-import {login} from "../redux/slices/users";
+import {useAppDispatch, useAppSelector} from "../redux/hooks";
+import {login, setData} from "../redux/slices/users";
+import {checkAuth} from "../helpers/setAuth";
 
 
 interface loginForm {
@@ -12,6 +13,7 @@ interface loginForm {
 const Login = () => {
 	let navigate = useNavigate();
 	const dispatch = useAppDispatch()
+	const userState = useAppSelector((state) => state.users)
 
 	const initialValues: loginForm = { email: '', password: '' };
 	const [formValues, setFormValues] = useState<loginForm>(initialValues);
@@ -53,16 +55,18 @@ const Login = () => {
 	}, [isSubmit, formErr]);
 
 
-	// todo: add
-	// useEffect(() => {
-	// 	if (localStorage.getItem('token') && !store.setAuth) {
-	// 		store.checkAuth().then((res: boolean | undefined) => {
-	// 			if (res === true) {
-	// 				navigate('/home');
-	// 			}
-	// 		});
-	// 	}
-	// }, []);
+	useEffect(() => {
+		if (!userState.data) {
+			checkAuth().then((res) => {
+				if (res) {
+					console.log(res)
+					dispatch(setData(res));
+					navigate('/dashboard');
+				}
+			});
+		}
+	}, []);
+
 
 	const validate = (value: loginForm) => {
 		const errors: loginForm = {} as any;
