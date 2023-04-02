@@ -56,7 +56,6 @@ const Dashboard = () => {
                     setFile(undefined);
                 })
                 .catch((e) => {
-                    console.log(`Error ${e}`);
                     setSubmit(false);
                     setErrorMessage(e.message);
                 });
@@ -88,8 +87,6 @@ const Dashboard = () => {
             .then((res) => {
                 setImageUrl(res.data.url);
             })
-            .then((data) => console.log(data))
-            .catch((err) => console.error(err));
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

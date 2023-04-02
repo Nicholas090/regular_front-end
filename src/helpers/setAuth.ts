@@ -8,6 +8,5 @@ export const checkAuth = async () => {
         localStorage.setItem('token', response.data.accessToken);
         return response.data
     } catch (e: any) {
-        console.log(e);
     }
 }

@@ -54,7 +54,6 @@ const usersSlice = createSlice({
             state.data = null;
         },
         setData: (state,  payload) => {
-            console.log(payload.payload);
             state.data = payload.payload;
             state.status = 'loaded';
         }

@@ -38,18 +38,16 @@ const Login = () => {
 
 			dispatch(login({ email, password }))
 				.then((res) => {
-					if (userState.status !== 'loaded') {
+					if (userState.status === 'error') {
 						throw new Error('Something went wrong');
 					}
 					setFormValues({ email: '', password: '' });
 					setSubmit(false);
 					setErrorMessage(null);
-					console.log(res);
 					navigate('/dashboard');
 
 				})
 				.catch((e) => {
-					console.log(`Error ${e}`);
 					setSubmit(false);
 					setErrorMessage(e.message);
 				});
@@ -61,7 +59,6 @@ const Login = () => {
 		if (!userState.data) {
 			checkAuth().then((res) => {
 				if (res) {
-					console.log(res)
 					dispatch(setData(res));
 					navigate('/dashboard');
 				}

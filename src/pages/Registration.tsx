@@ -29,26 +29,20 @@ const Registration = () => {
         e.preventDefault();
         setFormErr(validate(formValues));
         setSubmit(true);
-        console.log(formErr);
-        console.log(formValues);
     };
 
     useEffect(() => {
         if (formErr === null && isSubmit) {
-            console.log(`${formValues} success`);
             const { email, password, name, nickname } = formValues;
 
             dispatch(register({ email, password, name, nickname }))
                 .then((res) => {
-                    if (userState.status !== 'loaded') {
+                    if (userState.status === 'error') {
                         throw new Error('Something went wrong');
                     }
                         setFormValues({ email: '', password: '', nickname: '', name: '' });
                         setSubmit(false);
                         navigate('/dashboard');
-                })
-                .catch((e) => {
-                    console.log(`Error ${e}`);
                 })
                 .finally(() => {
                     setSubmit(false);
