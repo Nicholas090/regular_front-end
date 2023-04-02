@@ -1,9 +1,6 @@
-/**,*/
-/**::before,*/
-/**::after {*/
-/*  box-sizing: border-box;*/
-/*}*/
-
+* {
+  font-family: 'Poppins', sans-serif;
+}
 .loginBlock {
   background-color: #ffffff;
   margin-top: 50px;
@@ -256,7 +253,7 @@ body {
   margin: 0;
 }
 nav {
-  position: fixed;
+  /*position: fixed;*/
   z-index: 10;
   left: 0;
   right: 0;
@@ -317,5 +314,77 @@ nav .links a:hover {
   color: #0880AE
 ;
 }
+
+.container{
+  max-width: 1170px;
+}
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.row strong{
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  margin: 10px 0 10px 0;
+}
+ul{
+  list-style: none;
+}
+.footer{
+  background-color: #434343;
+  padding: 70px 10% 0 10%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.footer-col{
+  width: 20%;
+  padding: 0 15px;
+}
+.footer-col h4{
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 35px;
+  font-weight: 500;
+  position: relative;
+}
+
+.footer-col ul{
+  padding: 0;
+}
+.footer-col ul li:not(:last-child){
+  margin-bottom: 10px;
+}
+.footer-col ul li a{
+  font-size: 16px;
+  text-decoration: none;
+  color: #ffffff;
+  display: block;
+}
+.footer-col ul li address{
+  color: #ffffff;
+}
+.footer-col p{
+  color: #ffffff;
+}
+
+/*responsive*/
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+  }
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+  }
+}
+
+
 
 
