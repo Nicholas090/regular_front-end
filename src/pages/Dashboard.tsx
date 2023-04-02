@@ -4,8 +4,10 @@ import axios from "../axios";
 import {checkAuth} from "../helpers/setAuth";
 import {login, setData} from "../redux/slices/users";
 import {createPost, CreatePostBody} from "../redux/slices/posts";
+import {useNavigate} from "react-router-dom";
 
 const Dashboard = () => {
+    const navigate = useNavigate();
     const dispatch = useAppDispatch()
 
     const [file, setFile] = useState<File>();
@@ -17,14 +19,16 @@ const Dashboard = () => {
     const [isSubmit, setSubmit] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string | null>();
 
-    const {data, status} = useAppSelector((state) => state.users)
+    const user = useAppSelector((state) => state.users)
 
     useEffect(() => {
-        if (!data) {
+        if (!user.data) {
             checkAuth().then((res) => {
                 if (res) {
                     dispatch(setData(res));
                 }
+            }).catch((e) => {
+                navigate('/login');
             });
         }
     }, []);
@@ -33,19 +37,23 @@ const Dashboard = () => {
         if (formErr === null && isSubmit) {
             const { title, content } = formValues;
 
-            if (!data?.user){
+            if (!user?.data || !imageUrl){
                 setSubmit(false);
                 return;
             }
 
-            const authorId = +data.user.id
+            const authorId = +user.data.user.id
 
             dispatch(createPost({ title, content, imageUrl, authorId }))
-                .then((res) => {
+                .then((res: any) => {
+                    if (res.error) {
+                        throw new Error(res.error.message)
+                    }
                     setFormValues({ content: '', title: '' });
                     setSubmit(false);
                     setErrorMessage(null);
-
+                    setImageUrl('')
+                    setFile(undefined);
                 })
                 .catch((e) => {
                     console.log(`Error ${e}`);
@@ -56,7 +64,7 @@ const Dashboard = () => {
     }, [isSubmit, formErr]);
 
 
-    if (!data || status === 'loading' || status === 'error' ) {
+    if (!user.data || user.status === 'loading' || user.status === 'error' ) {
         return (
             <div>Please login</div>
         )
@@ -173,16 +181,16 @@ const Dashboard = () => {
                     <h2>My profile</h2>
                     {
                         <>
-                            <p>Email {data.user.email}</p>
-                            <p>Name {data.user.name}</p>
-                            <p>Role {data.user.role}</p>
-                            <p>nickname {data.user.nickname}</p>
+                            <p>Email {user.data.user.email}</p>
+                            <p>Name {user.data.user.name}</p>
+                            <p>Role {user.data.user.role}</p>
+                            <p>nickname {user.data.user.nickname}</p>
                         </>
                     }
                 </div>
                 <div className="card">
                     <h2>Create post</h2>
-                    { file ? createPostForm() : uploadPhoto() }
+                    { imageUrl.length > 0 && file ? createPostForm() : uploadPhoto() }
                 </div>
             </div>
         </div>
