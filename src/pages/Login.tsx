@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import {useAppDispatch} from "../redux/hooks";
+import {login} from "../redux/slices/users";
 
 
 interface loginForm {
@@ -9,6 +11,8 @@ interface loginForm {
 
 const Login = () => {
 	let navigate = useNavigate();
+	const dispatch = useAppDispatch()
+
 	const initialValues: loginForm = { email: '', password: '' };
 	const [formValues, setFormValues] = useState<loginForm>(initialValues);
 	const [formErr, setFormErr] = useState<Partial<loginForm> | null>(null);
@@ -27,35 +31,38 @@ const Login = () => {
 	};
 
 	useEffect(() => {
-		// if (formErr === null && isSubmit) {
+		if (formErr === null && isSubmit) {
 			const { email, password } = formValues;
 
-		// 	store
-		// 		.login(email, password)
-		// 		.then((e) => {
-		// 			console.log('success');
-		// 			setFormValues({ email: '', password: '' });
-		// 			setSubmit(false);
-		// 			setErrorMessage(null);
-		// 			navigate('/user');
-		// 		})
-		// 		.catch((e: IResponseError) => {
-		// 			console.log(`Error ${e}`);
-		// 			setSubmit(false);
-		// 			setErrorMessage(e.message);
-		// 		});
-		// }
+			dispatch(login({ email, password }))
+				.then((res) => {
+					console.log('success');
+					setFormValues({ email: '', password: '' });
+					setSubmit(false);
+					setErrorMessage(null);
+					if (res) {
+						navigate('/dashboard');
+					}
+				})
+				.catch((e) => {
+					console.log(`Error ${e}`);
+					setSubmit(false);
+					setErrorMessage(e.message);
+				});
+		}
 	}, [isSubmit, formErr]);
 
-	useEffect(() => {
-		// if (localStorage.getItem('token') && !store.setAuth) {
-		// 	store.checkAuth().then((res: boolean | undefined) => {
-		// 		if (res === true) {
-		// 			navigate('/home');
-		// 		}
-		// 	});
-		// }
-	}, []);
+
+	// todo: add
+	// useEffect(() => {
+	// 	if (localStorage.getItem('token') && !store.setAuth) {
+	// 		store.checkAuth().then((res: boolean | undefined) => {
+	// 			if (res === true) {
+	// 				navigate('/home');
+	// 			}
+	// 		});
+	// 	}
+	// }, []);
 
 	const validate = (value: loginForm) => {
 		const errors: loginForm = {} as any;

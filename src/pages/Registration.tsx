@@ -1,5 +1,7 @@
 import React, {  useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import {useAppDispatch} from "../redux/hooks";
+import {register} from "../redux/slices/users";
 
 interface IRegistration {
     email: string;
@@ -10,6 +12,7 @@ interface IRegistration {
 
 const Registration = () => {
     let navigate = useNavigate();
+    const dispatch = useAppDispatch()
 
     const initialValues: IRegistration = { email: '', password: '', nickname: '', name: '' };
     const [formValues, setFormValues] = useState<IRegistration>(initialValues);
@@ -34,18 +37,20 @@ const Registration = () => {
             console.log(`${formValues} success`);
             const { email, password, name, nickname } = formValues;
 
-            // store
-            //     .registration(email, password, name, nickname)
-            //     .then((res: boolean | undefined) => {
-            //         if (res === true) {
-            //             setFormValues({ email: '', password: '', nickname: '', name: '' });
-            //             setSubmit(false);
-            //             navigate('/home');
-            //         }
-            //     })
-            //     .finally(() => {
-            //         setSubmit(false);
-            //     });
+            dispatch(register({ email, password, name, nickname }))
+                .then((res) => {
+                    if (res) {
+                        setFormValues({ email: '', password: '', nickname: '', name: '' });
+                        setSubmit(false);
+                        navigate('/dashboard');
+                    }
+                })
+                .catch((e) => {
+                    console.log(`Error ${e}`);
+                })
+                .finally(() => {
+                    setSubmit(false);
+                });
         }
     }, [isSubmit, formErr]);
 

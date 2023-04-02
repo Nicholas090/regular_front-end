@@ -1,13 +1,28 @@
-import {createSlice, createAsyncThunk, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import axios from '../../axios';
 
-export const login = createAsyncThunk('fetchAuth', async (params) => {
+
+export interface RegistrationBody {
+    email: string;
+    password: string;
+    nickname: string;
+    name: string;
+}
+
+export interface LoginBody {
+    email: string;
+    password: string;
+    nickname?: string;
+}
+
+
+export const login = createAsyncThunk('fetchAuth', async (params: LoginBody) => {
     const { data } = await axios.post('/login', params);
     return data;
 });
 
-export const register = createAsyncThunk('fetchRegister', async (params) => {
-    const { data } = await axios.post('/register', params);
+export const register = createAsyncThunk('fetchRegister', async (params: RegistrationBody) => {
+    const { data } = await axios.post('/registration', params);
     return data;
 });
 
@@ -17,7 +32,7 @@ export enum userRole {
     user = 'user',
 }
 
-interface IInitialState {
+export interface IInitialState {
     id: string;
     email: string;
     password: string;
@@ -26,7 +41,7 @@ interface IInitialState {
     role: userRole;
 }
 
-const initialState: { data: IInitialState | null, status: string  } = {
+const initialState: { data: { user: IInitialState, accessToken: string, refreshToken: string } | null, status: string  } = {
     data: null,
     status: 'loading',
 };
