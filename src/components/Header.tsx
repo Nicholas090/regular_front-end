@@ -27,11 +27,11 @@ const Header = () => {
                         <a href="tel:5145439936">(514) 543-9936</a>
                     </div>
                     <ul className="links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">Services</a></li>
-                        <li><a href="#work">About</a></li>
-                        <li><a href="#projects">Book now</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><Link to="/login">Home</Link></li>
+                        <li><Link to="#">Services</Link></li>
+                        <li><Link to="#">About</Link></li>
+                        <li><Link to="#">Book now</Link></li>
+                        <li><Link to="#">Contact</Link></li>
                     </ul>
             </nav>
         </>

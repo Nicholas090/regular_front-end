@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -6,26 +7,26 @@ const Footer = () => {
                     <div className="footer-col">
                         <h4>Departments</h4>
                         <ul>
-                            <li><a href="#">Medical</a></li>
-                            <li><a href="#">Pharmaceuticals</a></li>
-                            <li><a href="#">Medical Equipment</a></li>
+                            <li><Link to="#">Medical</Link></li>
+                            <li><Link to="#">Pharmaceuticals</Link></li>
+                            <li><Link to="#">Medical Equipment</Link></li>
                         </ul>
                     </div>
                     <div className="footer-col">
                         <h4>Quick Links</h4>
                         <ul>
-                            <li><a href="#">What do we do?</a></li>
-                            <li><a href="#">Our expertise</a></li>
-                            <li><a href="#">Request an Appointment</a></li>
-                            <li><a href="#">Request an Appointment</a></li>
+                            <li><Link to="#">What do we do?</Link></li>
+                            <li><Link to="#">Our expertise</Link></li>
+                            <li><Link to="#">Request an Appointment</Link></li>
+                            <li><Link to="#">Request an Appointment</Link></li>
                         </ul>
                     </div>
                     <div className="footer-col">
                         <h4>Head Office</h4>
                         <ul>
                             <li><address>4517 Washington Ave. Manchester, Kentucky 39495</address></li>
-                            <li><a href="mailto: darrell@mail.com">darrell@mail.com</a></li>
-                            <li><a href="tel:5145439936">(514) 543-9936</a></li>
+                            <li><Link to="mailto: darrell@mail.com">darrell@mail.com</Link></li>
+                            <li><Link to="tel:5145439936">(514) 543-9936</Link></li>
                         </ul>
                     </div>
                     <div className="footer-col">

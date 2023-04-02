@@ -38,13 +38,15 @@ const Login = () => {
 
 			dispatch(login({ email, password }))
 				.then((res) => {
-					console.log('success');
+					if (userState.status !== 'loaded') {
+						throw new Error('Something went wrong');
+					}
 					setFormValues({ email: '', password: '' });
 					setSubmit(false);
 					setErrorMessage(null);
-					if (res) {
-						navigate('/dashboard');
-					}
+					console.log(res);
+					navigate('/dashboard');
+
 				})
 				.catch((e) => {
 					console.log(`Error ${e}`);

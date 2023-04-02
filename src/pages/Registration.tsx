@@ -1,6 +1,6 @@
 import React, {  useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import {useAppDispatch} from "../redux/hooks";
+import {useAppDispatch, useAppSelector} from "../redux/hooks";
 import {register} from "../redux/slices/users";
 
 interface IRegistration {
@@ -13,6 +13,7 @@ interface IRegistration {
 const Registration = () => {
     let navigate = useNavigate();
     const dispatch = useAppDispatch()
+    const userState = useAppSelector((state) => state.users)
 
     const initialValues: IRegistration = { email: '', password: '', nickname: '', name: '' };
     const [formValues, setFormValues] = useState<IRegistration>(initialValues);
@@ -39,11 +40,12 @@ const Registration = () => {
 
             dispatch(register({ email, password, name, nickname }))
                 .then((res) => {
-                    if (res) {
+                    if (userState.status !== 'loaded') {
+                        throw new Error('Something went wrong');
+                    }
                         setFormValues({ email: '', password: '', nickname: '', name: '' });
                         setSubmit(false);
                         navigate('/dashboard');
-                    }
                 })
                 .catch((e) => {
                     console.log(`Error ${e}`);
