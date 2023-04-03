@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e375fd6-074c-43ba-b586-b49ef9977e5f" name="Changes" comment="add latest news and post">
-      <change afterPath="$PROJECT_DIR$/src/components/Pagination.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/helpers/usePagination.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pagination.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/svgs/AddressSvg.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/svgs/EmailSvg.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/svgs/PhoneSvg.tsx" afterDir="false" />
+    <list default="true" id="3e375fd6-074c-43ba-b586-b49ef9977e5f" name="Changes" comment="Big refactor and debug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +83,7 @@
       <workItem from="1680465987230" duration="3237000" />
       <workItem from="1680471435889" duration="188000" />
       <workItem from="1680502462063" duration="16891000" />
-      <workItem from="1680523608391" duration="8525000" />
+      <workItem from="1680523608391" duration="9139000" />
     </task>
     <task id="LOCAL-00001" summary="Add Login, Register pages and redux state">
       <created>1680380936730</created>
@@ -167,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680518156853</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Big refactor and debug">
+      <created>1680532305570</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1680532305570</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +190,7 @@
     <MESSAGE value="update error handlings" />
     <MESSAGE value="delete all logers" />
     <MESSAGE value="add latest news and post" />
-    <option name="LAST_COMMIT_MESSAGE" value="add latest news and post" />
+    <MESSAGE value="Big refactor and debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Big refactor and debug" />
   </component>
 </project>

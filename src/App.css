@@ -371,8 +371,7 @@ nav .links a {
   font-family: 'Poppins', sans-serif;
 }
 nav .links a:hover {
-  color: #0880AE
-;
+  color: #0880AE;
 }
 
 .container{
@@ -609,6 +608,15 @@ ul{
   padding: 20px;
   text-decoration: none;
   display: block;
+  color: #252525;
+}
+
+.dropdown-child {
+  color: #252525;
+}
+
+.dropdown-child:hover  {
+  color: #0880AE;
 }
 
 .submainmenubtn {
@@ -623,7 +631,7 @@ ul{
   background-color: white;
   position: absolute;
   border-top: 4px solid #0880AE;
-  top: 70px;
+  top: -4px;
   left: 130px;
 }
 
@@ -631,6 +639,7 @@ ul{
   padding: 20px;
   text-decoration: none;
   display: block;
+  color: #252525;
 }
 .submainmenubtn:hover .subdropdown-child {
   display: block;
@@ -639,7 +648,12 @@ ul{
 .mainmenubtn:hover .dropdown-child {
   display: block;
 }
-
+.dropdown-child p:hover {
+  color: #0880AE;
+}
+.subdropdown-child p:hover {
+  color: #0880AE;
+}
 
 .mainmenubtn:hover .rotateSvg {
   transform: rotate(180deg);
