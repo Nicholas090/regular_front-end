@@ -4,7 +4,7 @@ import axios from "../axios";
 import {checkAuth} from "../helpers/setAuth";
 import {login, setData} from "../redux/slices/users";
 import {createPost, CreatePostBody} from "../redux/slices/posts";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -173,6 +173,7 @@ const Dashboard = () => {
     return (
         <div className="dashboard-container">
             <h1>Welcome to your Dashboard!</h1>
+            <Link to={'/'}>Home</Link>
             <div className="cards-container">
                 <div className="card">
                     <h2>My profile</h2>

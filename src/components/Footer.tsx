@@ -1,4 +1,10 @@
 import {Link} from "react-router-dom";
+import addressSvg from "../svgs/AddressSvg";
+import emailSvg from "../svgs/EmailSvg";
+import phoneSvg from "../svgs/PhoneSvg";
+import AddressSvg from "../svgs/AddressSvg";
+import EmailSvg from "../svgs/EmailSvg";
+import PhoneSvg from "../svgs/PhoneSvg";
 
 const Footer = () => {
     return (
@@ -24,9 +30,16 @@ const Footer = () => {
                     <div className="footer-col">
                         <h4>Head Office</h4>
                         <ul>
-                            <li><address>4517 Washington Ave. Manchester, Kentucky 39495</address></li>
-                            <li><Link to="mailto: darrell@mail.com">darrell@mail.com</Link></li>
-                            <li><Link to="tel:5145439936">(514) 543-9936</Link></li>
+                            <li>
+                                {<AddressSvg />}
+                                <address>4517 Washington Ave. Manchester, Kentucky 39495</address>
+                            </li>
+                            <li>
+                                {<EmailSvg />}<Link to="mailto: darrell@mail.com">darrell@mail.com</Link>
+                            </li>
+                            <li>
+                                {<PhoneSvg />}<Link to="tel:5145439936">(514) 543-9936</Link>
+                            </li>
                         </ul>
                     </div>
                     <div className="footer-col">

@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-
-
     return (
         <>
             <nav>
@@ -28,7 +25,29 @@ const Header = () => {
                     </div>
                     <ul className="links">
                         <li><Link to="/login">Home</Link></li>
-                        <li><Link to="#">Services</Link></li>
+                        <li className="mainmenubtn">
+                            <Link to="#">
+                                Services
+                                    <div className="dropdown-child">
+                                        <div className="submainmenubtn">Sub-menu 1
+                                            <div className="subdropdown-child">
+                                                <p>Sub-menu 1</p>
+                                                <p>Sub-menu 2</p>
+                                                <p>Sub-menu 3</p>
+                                                <p>Sub-menu 4</p>
+                                                <p>Sub-menu 5</p>
+                                            </div>
+                                        </div>
+                                        <p>Sub-menu 2</p>
+                                        <p>Sub-menu 3</p>
+                                        <p>Sub-menu 4</p>
+                                        <p>Sub-menu 5</p>
+                                    </div>
+                            </Link>
+                            <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg" className="rotateSvg">
+                                <path fillRule="evenodd" clipRule="evenodd" d="M9.28262 1.15124L8.84963 0.71811C8.69959 0.575728 8.52434 0.504517 8.3243 0.504517C8.12013 0.504517 7.94696 0.575728 7.80452 0.71811L4.99818 3.52453L2.19186 0.718191C2.04944 0.575809 1.87623 0.504598 1.67214 0.504598C1.472 0.504598 1.29679 0.575809 1.14673 0.718191L0.719418 1.15132C0.573112 1.29753 0.5 1.47273 0.5 1.67678C0.5 1.88463 0.573193 2.05786 0.719398 2.19642L4.47845 5.95548C4.61709 6.10171 4.79023 6.17488 4.99816 6.17488C5.20219 6.17488 5.37737 6.10173 5.52354 5.95548L9.2826 2.19642C9.42505 2.05395 9.49632 1.88075 9.49632 1.67678C9.49634 1.47654 9.42507 1.30143 9.28262 1.15124Z" fill="#252525"/>
+                            </svg>
+                        </li>
                         <li><Link to="#">About</Link></li>
                         <li><Link to="#">Book now</Link></li>
                         <li><Link to="#">Contact</Link></li>
