@@ -44,8 +44,6 @@ const Login = () => {
 					setFormValues({ email: '', password: '' });
 					setSubmit(false);
 					setErrorMessage(null);
-					navigate('/dashboard');
-
 				})
 				.catch((e) => {
 					setSubmit(false);
@@ -65,6 +63,10 @@ const Login = () => {
 			});
 		}
 	}, []);
+
+	if (userState.data) {
+		navigate('/dashboard');
+	}
 
 
 	const validate = (value: loginForm) => {

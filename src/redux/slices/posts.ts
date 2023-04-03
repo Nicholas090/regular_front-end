@@ -32,22 +32,28 @@ export const createPost = createAsyncThunk('createPost', async (params: CreatePo
 });
 
 export const getPostById = createAsyncThunk('getByIdPost', async (id: number) => {
-    const { data } = await axios.post(`/getById/${id}`);
+    const { data } = await axios.get(`/getById/${id}`);
     return data;
 });
 
 export const getPostsWithPagination = createAsyncThunk('getWithPaginationPosts', async (params: GetPostsBody) => {
-    const { data } = await axios.post('/getPosts', params);
+    const { data } = await axios.get('/posts', { params });
+    return data;
+});
+
+
+export const getRandomPost = createAsyncThunk('getRandomPost', async () => {
+    const { data } = await axios.get('/randomPost');
     return data;
 });
 
 export const updatePost = createAsyncThunk('updatePost', async (params: UpdatePostByIdBody) => {
-    const { data } = await axios.post('/update', params);
+    const { data } = await axios.patch('/update', params);
     return data;
 });
 
 export const deletePost= createAsyncThunk('deletePost', async (params: DeletePostBody) => {
-    const { data } = await axios.post('/delete', params);
+    const { data } = await axios.delete('/delete', { params });
     return data;
 });
 
@@ -59,11 +65,13 @@ export interface IInitialPostState {
     content: string;
     imageUrl: string;
     authorId: string;
+    createdAt: string;
 }
 
-const initialState: { posts: IInitialPostState[] | null, currentPost: IInitialPostState | null, status: string  } = {
+const initialState: { posts: { data: IInitialPostState[], totalCount : number } | null, currentPost: IInitialPostState | null, status: string, randomPost: IInitialPostState | null } = {
     posts: null,
     currentPost: null,
+    randomPost: null,
     status: 'loading',
 };
 
@@ -105,6 +113,18 @@ const postsSlice = createSlice({
         [getPostsWithPagination.rejected.type]: (state) => {
             state.status = 'error';
             state.posts = null;
+        },
+        [getRandomPost.pending.type]: (state) => {
+            state.status = 'loading';
+            state.randomPost = null;
+        },
+        [getRandomPost.fulfilled.type]: (state, action) => {
+            state.status = 'loaded';
+            state.randomPost = action.payload;
+        },
+        [getRandomPost.rejected.type]: (state) => {
+            state.status = 'error';
+            state.randomPost = null;
         },
     },
 });
